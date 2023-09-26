@@ -1,1 +1,1 @@
-# COVID-twitter-LGBTQ-analysis
+# COVID-twitter-SGD-analysis
