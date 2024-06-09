@@ -21,9 +21,9 @@ from gensim.corpora import Dictionary
 from gensim.models import LdaModel, LdaMulticore, LsiModel, CoherenceModel
 import sys
 
-read_path = '/data1/lgbt_tweets/lda/input.csv'
-output_path = '/data1/lgbt_tweets/lda/out.txt'
-corpus_path = '/data1/lgbt_tweets/lda/corpus/corpus.pkl'
+read_path = '/data1/sgd_tweets/lda/input.csv'
+output_path = '/data1/sgd_tweets/lda/out.txt'
+corpus_path = '/data1/sgd_tweets/lda/corpus/corpus.pkl'
 
 # redirect
 current = sys.stdout
@@ -70,7 +70,7 @@ def topic_modeling(num_topics=5):
         num_topics=num_topics,
         random_state=0
     )
-    model.save('/data1/lgbt_tweets/lda/model/topic%i.model'%num_topics)    
+    model.save('/data1/sgd_tweets/lda/model/topic%i.model'%num_topics)    
     # Compute Perplexity
     print('Perplexity: ', model.log_perplexity(corpus))  # a measure of how good the model is. lower the better.
     # Compute Coherence Score
@@ -79,7 +79,7 @@ def topic_modeling(num_topics=5):
     print('Coherence: ', coherence_lda)
     # Visualize the topics
     vis = pyLDAvis.gensim_models.prepare(model, corpus, dictionary)
-    pyLDAvis.save_html(vis, '/data1/lgbt_tweets/lda/vis/topic%d.html'%num_topics)
+    pyLDAvis.save_html(vis, '/data1/sgd_tweets/lda/vis/topic%d.html'%num_topics)
 
 for num_topics in range(8,30):
     topic_modeling(num_topics=num_topics)
