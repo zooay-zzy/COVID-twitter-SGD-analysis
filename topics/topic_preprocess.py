@@ -9,9 +9,9 @@ import spacy
 from gensim.models.phrases import Phrases, Phraser
 from ast import literal_eval
 
-stopwords_path = '/data1/lgbt_tweets/lda/stopwords.txt'
-read_path = '/data1/lgbt_tweets/lda/corpus.csv'
-write_path = '/data1/lgbt_tweets/lda/input.csv'
+stopwords_path = '/data1/sgd_tweets/lda/stopwords.txt'
+read_path = '/data1/sgd_tweets/lda/corpus.csv'
+write_path = '/data1/sgd_tweets/lda/input.csv'
 
 with open(stopwords_path,'r') as f:
     stop_words = f.read().splitlines()
@@ -48,7 +48,7 @@ long_string = ",".join([",".join([
     ]) for c in corpus])
 
 # save tokens to files
-df_token = df[["id", "tokens", "full_text","time",'count','user','geo','lgbt']]
+df_token = df[["id", "tokens", "full_text","time",'count','user','geo','sgd']]
 df_token = df_token[df_token["count"] >= 5]
 print(len(df_token))
 df_token.to_csv(write_path, index=False)
